@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/css/theme/serif.css">
+
+    <link rel="stylesheet" href="styles/hljs/solarized_dark.css">
+
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <img class="plain" data-src="images/AngularJS-huge.png" width="912" height="236">
+          <h3>An Introduction</h3>
+        </section>
+
+        <section>
+          <h2>What is it?</h2>
+
+          <ul>
+            <li>Javascript framework</li>
+            <li>Open source
+              <ul>
+                <li><a href="https://github.com/angular/angular.js" target="_blank">https://github.com/angular/angular.js</a></li>
+              </ul>
+            </li>
+            <li>HTML enhanced for webapps!</li>
+            <li>MVW - model view whatever (works for you)</li>
+            <li>One among many
+              <ul>
+                <li>Ember</li>
+                <li>Backbone</li>
+                <li>Knockout</li>
+                <li>Durandal</li>
+                <li>React</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <img class="plain" data-src="images/feelings_about_angularjs_over_time.png">
+        </section>
+
+        <section>
+          <pre><code data-src="examples/intro.html"></code></pre>
+
+          <hr>
+
+          <h3 class="fragment">So what?</h3>
+
+          <ul>
+            <li class="fragment">Custom attributes</li>
+            <li class="fragment">Templating</li>
+            <li class="fragment">Expressions</li>
+            <li class="fragment">Data binding</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+    <script src="node_modules/reveal.js/js/reveal.js"></script>
+    <script src="scripts/highlight.pack.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+
+    <script>
+      Reveal.initialize({
+        transition: 'convex',
+        history: true
+      });
+
+      (function() {
+        var $ = angular.element;
+        var $http = angular.injector(['ng']).get('$http');
+        var ngAppRegEx = /\sng\-app(="(.+)")?/;
+
+        angular.forEach($(document).find('code'), function(code) {
+          var $code = $(code);
+          var src = $(code).attr('data-src');
+
+          if (src) {
+            $http.get(src).then(function(response) {
+              var moduleName = ngAppRegEx.exec(response.data)[2];
+
+              $code.text(response.data);
+
+              hljs.highlightBlock(code);
+
+              var example = $code.parent().after(response.data.replace(ngAppRegEx, '')).next();
+
+              angular.bootstrap(example);
+            });
+          }
+        });
+      }());
+    </script>
+  </body>
+</html>

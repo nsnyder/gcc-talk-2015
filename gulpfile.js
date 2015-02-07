@@ -3,9 +3,9 @@ var browserSync = require('browser-sync');
 
 var files = [
   'index.html',
-  'demos/**/*',
-  'examples/**/*',
-  'images/**/*',
+  'demos/**/*.*',
+  'examples/**/*.*',
+  'images/**/*.*',
   'scripts/**/*.js',
   'styles/**/*.css'
 ];
@@ -14,6 +14,10 @@ gulp.task('serve', function() {
   browserSync({
     server: {
       baseDir: './'
+    },
+    notify: false,
+    snippetOptions: {
+      ignorePaths: ['node_modules/**/*.html', 'demos/**/*.html']
     }
   });
 

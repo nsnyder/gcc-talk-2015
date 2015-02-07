@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="node_modules/reveal.js/css/theme/serif.css">
 
-    <link rel="stylesheet" href="styles/hljs/solarized_dark.css">
+    <link rel="stylesheet" href="styles/hljs/solarized_light.css">
 
     <link rel="stylesheet" href="styles/main.css">
   </head>
@@ -17,6 +17,13 @@
         <section>
           <img class="plain" data-src="images/AngularJS-huge.png" width="912" height="236">
           <h3>An Introduction</h3>
+
+          <aside class="notes">
+            <ul>
+              <li>Angular familiarity?</li>
+              <li>Javascript familiarity?</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -44,6 +51,35 @@
         </section>
 
         <section>
+          <h2>Why?</h2>
+          <img class="fragment pull-left sxs" data-src="images/geocities-1.png">
+          <img class="fragment pull-right sxs" data-src="images/gmail.png">
+        </section>
+
+        <section>
+          <div class="pull-left sxs">
+            <h3>Then...</h3>
+
+            <ul class="fragment">
+              <li>Static</li>
+              <li>Monolithic</li>
+              <li>Request/response cycle</li>
+              <li>Ajax was a breakthrough</li>
+            </ul>
+          </div>
+
+          <div class="fragment pull-right sxs">
+            <h3>Now</h3>
+
+            <ul class="fragment">
+              <li>Dynamic</li>
+              <li>Javascript and DOM api</li>
+              <li>SPA</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
           <img class="plain" data-src="images/feelings_about_angularjs_over_time.png">
         </section>
 
@@ -60,8 +96,86 @@
             <li class="fragment">Expressions</li>
             <li class="fragment">Data binding</li>
           </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>Real, running code</li>
+            </ul>
+          </aside>
         </section>
-      </div>
+
+        <section>
+          <a href="demos/1-modular/" target="_blank"><h3>Modules</h3></a>
+
+          <pre><code>
+var app = angular.module('app', ['ngRoute']);
+
+app.controller('SomeController', SomeController);
+app.service('SomeService', SomeService);
+          </code></pre>
+
+          <ul class="fragment">
+            <li>No main function</li>
+            <li>Declaritive syntax</li>
+            <li>Modularization ftw!</li>
+          </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>Open demo</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <a href="demos/2-controllers/" target="_blank"><h3>Controllers</h3></a>
+
+          <code><pre>
+// Controller names are Pascal Case
+app.controller('MyController', function() {
+  // data and behavior go in here, NOT in the view
+  this.items = ['first', 'second', 'third'];
+
+  this.addItem = function(newItem) {
+    this.items.push(newItem);
+  };
+});
+          </code></pre>
+        </section>
+
+        <section>
+          <ul>
+            <li>Should be short - there are other places to put logic</li>
+            <li>In particular, should NOT manipulate the dom</li>
+            <li>Injectable (as are most things in Angular)
+          </ul>
+        </section>
+
+        <section>
+          <a href="demos/3-magic/" target="_blank"><h3>Magic!</h3></a>
+        </section>
+
+        <section>
+          <h3>ngModel</h3>
+
+          <ul>
+            <li>Two-way data binding</li>
+            <li>Form validation</li>
+            <li>Formatting & parsing</li>
+          </ul>
+        </section>
+
+        <section>
+          <a href="demos/4-templating/" target="_blank"><h3>Templating</h3></a>
+
+          <aside class="notes">
+            <ul>
+              <li>ngRepeat</li>
+              <li>ngSwitch</li>
+              <li>ngIf</li>
+            </ul>
+          </aside>
+        </section>
     </div>
 
     <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
@@ -72,7 +186,10 @@
     <script>
       Reveal.initialize({
         transition: 'convex',
-        history: true
+        history: true,
+        dependencies: [
+          { src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true }
+        ]
       });
 
       (function() {
@@ -96,6 +213,10 @@
 
               angular.bootstrap(example);
             });
+          } else {
+            code.innerHTML = code.innerHTML.trim();
+
+            hljs.highlightBlock(code);
           }
         });
       }());

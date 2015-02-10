@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="node_modules/reveal.js/css/theme/serif.css">
 
-    <link rel="stylesheet" href="styles/hljs/solarized_light.css">
+    <link rel="stylesheet" href="styles/hljs/solarized_dark.css">
 
     <link rel="stylesheet" href="styles/main.css">
   </head>
@@ -117,7 +117,7 @@ app.service('SomeService', SomeService);
 
           <ul class="fragment">
             <li>No main function</li>
-            <li>Declaritive syntax</li>
+            <li>Declarative syntax</li>
             <li>Modularization ftw!</li>
           </ul>
 
@@ -126,6 +126,7 @@ app.service('SomeService', SomeService);
               <li>The way to create an app is to define a module</li>
               <li>Modules can depend on modules</li>
               <li>*Open demo</li>
+              <li>Start with mustache template and work backwards</li>
             </ul>
           </aside>
         </section>
@@ -214,7 +215,11 @@ app.controller('MyController', function() {
         </section>
 
         <section>
-          <h3>Routing</h3>
+          <a href="demos/6-routing/" target="_blank"><h3>Routing</h3></a>
+
+          <aside class="notes">
+            <p>A brand new, super-awesome router is in the works</p>
+          </aside>
         </section>
 
         <section>
@@ -265,6 +270,9 @@ app.controller('MyController', function($scope, myService) {
       Reveal.initialize({
         transition: 'convex',
         history: true,
+        overview: false,
+        touch: false,
+        controls: false,
         dependencies: [
           { src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true }
         ]

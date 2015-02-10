@@ -16,12 +16,13 @@
       <div class="slides">
         <section>
           <img class="plain" data-src="images/AngularJS-huge.png" width="912" height="236">
-          <h3>An Introduction</h3>
+          <h3>A flyby</h3>
 
           <aside class="notes">
             <ul>
               <li>Angular familiarity?</li>
               <li>Javascript familiarity?</li>
+              <li>Please ask questions at any time!</li>
             </ul>
           </aside>
         </section>
@@ -122,7 +123,9 @@ app.service('SomeService', SomeService);
 
           <aside class="notes">
             <ul>
-              <li>Open demo</li>
+              <li>The way to create an app is to define a module</li>
+              <li>Modules can depend on modules</li>
+              <li>*Open demo</li>
             </ul>
           </aside>
         </section>
@@ -141,14 +144,25 @@ app.controller('MyController', function() {
   };
 });
           </code></pre>
+
+          <aside class="notes">
+            <ul>
+              <li>Control some part of the DOM</li>
+              <li>*Open the demo</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <ul>
             <li>Should be short - there are other places to put logic</li>
-            <li>In particular, should NOT manipulate the dom</li>
+            <li>Should NOT manipulate the dom</li>
             <li>Injectable (as are most things in Angular)
           </ul>
+
+          <aside class="notes">
+            <p>More on DOM manipulation and injection in a minute</p>
+          </aside>
         </section>
 
         <section>
@@ -163,6 +177,10 @@ app.controller('MyController', function() {
             <li>Form validation</li>
             <li>Formatting & parsing</li>
           </ul>
+
+          <aside class="notes">
+            <p>Responsible for keeping model and view in sync</p>
+          </aside>
         </section>
 
         <section>
@@ -170,11 +188,71 @@ app.controller('MyController', function() {
 
           <aside class="notes">
             <ul>
+              <li>*Show demo</li>
               <li>ngRepeat</li>
               <li>ngSwitch</li>
               <li>ngIf</li>
+              <li>validation</li>
             </ul>
           </aside>
+        </section>
+
+        <section>
+          <a href="demos/5-filters/" target="_blank"><h3>Filters</h3></a>
+          <h5>Alter the result of an expression</h5>
+
+          <aside class="notes">
+            <ul>
+              <li>orderBy</li>
+              <li>filter</li>
+              <li>date</li>
+              <li>currency</li>
+              <li>others...</li>
+              <li>write your own!</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Routing</h3>
+        </section>
+
+        <section>
+          <h3>DI</h3>
+          <h5>Inject all the things</h5>
+        </section>
+
+        <section>
+          <h5>Simple</h5>
+
+          <pre><code>
+app.service('myService', function($http) {
+  this.getStuff = function() {
+    return $http.get('some/url');
+  };
+});
+
+app.controller('MyController', function($scope, myService) {
+  myService.getStuff().success(function(data) {
+    $scope.stuff = data;
+  });
+});
+          </pre></code>
+
+          <aside class="notes">
+            <ul>
+              <li>$ prefix indicates Angular builtin service</li>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Directives</h3>
+        </section>
+
+        <section>
+          <h1>Thank you!</h1>
+
+          <p>This presentation and all code available at <a href="https://github.com/twhitbeck/gcc-talk-2015" target="_blank">github.com/twhitbeck/gcc-talk-2015</a></p>
         </section>
     </div>
 

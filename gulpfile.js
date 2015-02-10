@@ -3,9 +3,8 @@ var browserSync = require('browser-sync');
 
 var files = [
   'index.html',
-  'demos/**/*.*',
-  'examples/**/*.*',
-  'images/**/*.*',
+  'examples/**',
+  'images/**',
   'scripts/**/*.js',
   'styles/**/*.css'
 ];
@@ -17,7 +16,7 @@ gulp.task('serve', function() {
     },
     notify: false,
     snippetOptions: {
-      ignorePaths: ['node_modules/**/*.html', 'demos/**/*.html']
+      ignorePaths: ['node_modules/**', 'demos/**', 'examples/**']
     }
   });
 

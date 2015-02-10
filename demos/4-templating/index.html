@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="templatingDemo">
+  <head>
+    <base href="/">
+
+    <title>Templating</title>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="demos/4-templating/main.js"></script>
+
+    <body ng-controller="MainController as main">
+      <h3>People:</h3>
+
+      <ul>
+        <li ng-repeat="person in main.people">
+          {{person.first}} {{person.last}}<span ng-if="person.dob">, age {{::main.fullYearsSince(person.dob)}}</span>
+        </li>
+      </ul>
+
+      <p ng-switch="main.people.length">
+        <span ng-switch-when="1">You're lonely</span>
+        <span ng-switch-when="2">Two's company</span>
+        <span ng-switch-when="3">Three's a crowd</span>
+        <span ng-switch-default>Too many people!</span>
+      </p>
+
+      <hr>
+
+      <form name="newPersonForm" ng-submit="main.addPerson(newPerson); newPerson = {}" novalidate>
+        <p>
+          <label>First: <input name="first" type="text" ng-model="newPerson.first" required></label>
+          <span ng-show="newPersonForm.first.$error.required">* Please enter a first name</span>
+        </p>
+
+        <p>
+          <label>Last: <input type="text" ng-model="newPerson.last"></label>
+        </p>
+
+        <p>
+          <label>DOB: <input type="date" ng-model="newPerson.dob"></label>
+        </p>
+
+        <p>
+          <input type="submit" value="Join" ng-disabled="!newPersonForm.$valid">
+        </p>
+      </form>
+    </body>
+  </head>
+</html>

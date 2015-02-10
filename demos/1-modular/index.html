@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <base href="/">
+
+    <title>Modules, yay!</title>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="demos/1-modular/main.js"></script>
+  </head>
+
+  <body ng-controller="MainController as main">
+    <p><strong>Item:</strong> {{main.item.name}} for {{main.item.points}} points</p>
+  </body>
+</html>

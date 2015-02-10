@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="filtersDemo">
+  <head>
+    <base href="/">
+
+    <title>Filters</title>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="demos/5-filters/main.js"></script>
+
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      table, th, td {
+        border: 1px solid;
+      }
+
+      th, td {
+        padding: 5px;
+      }
+
+      th {
+        cursor: pointer;
+      }
+
+      th:hover {
+        background-color: #EEE;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="MainController as main" ng-init="search = ''">
+    <table>
+      <thead>
+        <tr>
+          <th ng-click="order = order === 'name' ? '-name' : 'name'">Name</th>
+          <th ng-click="order = order === 'dob' ? '-dob' : 'dob'">DOB</th>
+          <th ng-click="order = order === 'worth' ? '-worth' : 'worth'">Worth</th>
+        </tr>
+
+        <tr>
+          <th><input type="search" placeholder="Name search" ng-model="search"></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="person in main.people | orderBy:order | filter:{name: search}">
+          <td>{{person.name}}</td>
+          <td>{{person.dob | date}}</td>
+          <td>{{person.worth | currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

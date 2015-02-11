@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="shopper">
+  <head>
+    <base href="/">
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="lab/step-2/main.js"></script>
+  </head>
+
+  <body ng-controller="CartController as cart">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Cost</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- TODO: Fix this <tr> to repeat for each item in the cart.items array
+        using the ng-repeat attribute -->
+        <tr>
+          <td>
+            <input type="text" ng-model="cart.item.name">
+          </td>
+
+          <td>
+            <input type="number" ng-model="cart.item.quantity">
+          </td>
+
+          <td>
+            <input type="number" ng-model="cart.item.cost" step=".1">
+          </td>
+
+          <td>{{cart.item.subTotal() | currency}}</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="3"></td>
+
+          <!-- Use the 'subTotal' function here (optionally add 'currency' filter) -->
+          <td>TODO</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div>
+      <strong>Tax Rate:</strong>
+      {{cart.taxRate | percentage}}
+    </div>
+    <div>
+      <strong>Total Cost:</strong>
+      {{cart.total() | currency}}
+    </div>
+  </body>
+</html>
+

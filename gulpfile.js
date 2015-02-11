@@ -3,6 +3,7 @@ var browserSync = require('browser-sync');
 
 var files = [
   'index.html',
+  'lab/**',
   'examples/**',
   'images/**',
   'scripts/**/*.js',

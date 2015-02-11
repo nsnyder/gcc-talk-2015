@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="shopper">
+  <head>
+    <base href="/">
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="lab/step-3/main.js"></script>
+  </head>
+
+  <body ng-controller="CartController as cart">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Cost</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" placeholder="name" ng-model="newItemName"></td>
+          <td><input type="number" placeholder="quantity" ng-model="newItemQuantity"></td>
+          <td><input type="number" step="0.1" placeholder="cost" ng-model="newItemCost"></td>
+          <td></td>
+
+          <td>
+            <!-- TODO: tell this button to call the 'addItem' function of the
+            controller when it is clicked using the 'ng-click' attribute.
+            Note that addItem takes 3 arguments: name, quantity, and cost. These arguments
+            are available to you by the names specified in the 'ng-model' attribute of the above <input>'s
+            -->
+            <button>Add</button>
+          </td>
+        </tr>
+
+        <tr ng-repeat="item in cart.items">
+          <td>
+            <input type="text" ng-model="item.name">
+          </td>
+
+          <td>
+            <input type="number" ng-model="item.quantity">
+          </td>
+
+          <td>
+            <input type="number" ng-model="item.cost" step=".1">
+          </td>
+
+          <td>{{item.subTotal()}}</td>
+
+          <td>
+            <!-- TODO: tell this button to call the 'removeItemAtIndex' function
+            when it is clicked.
+            hint: ngRepeat automatically makes available to you a special
+            property called '$index' which might be of use to you here -->
+            <button>Remove</button>
+          </td>
+        </tr>
+
+        <!-- TODO: Hide this <tr> if the cart contains any items
+          Hint: try ng-if or ng-show/ng-hide 
+          Hint 2: In javascript, 0 is "falsy" and anything greater than 0
+          is "truthy". The length of the items array is avaialable as 'cart.items.length' -->
+          <tr>
+            <td colspan="5">Your cart is empty! Try adding some items.</td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="3"></td>
+
+            <td>{{cart.subTotal() | currency}}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div>
+        <strong>Tax Rate:</strong>
+        {{cart.taxRate | percentage}}
+      </div>
+      <div>
+        <strong>Total Cost:</strong>
+        {{cart.total() | currency}}
+      </div>
+    </body>
+  </html>

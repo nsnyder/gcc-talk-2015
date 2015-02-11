@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="shopper">
+  <head>
+    <base href="/">
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="lab/step-1/main.js"></script>
+  </head>
+
+  <body ng-controller="CartController">
+    <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Subtotal</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input type="text" ng-model="cart.item.name">
+        </td>
+
+        <td>
+          <input type="number" ng-model="cart.item.quantity">
+        </td>
+
+        <td>
+          <input type="number" ng-model="cart.item.cost" step=".1">
+        </td>
+
+        <!-- Show the item subTotal in this <td> (use the built-in 'currency' filter) -->
+        <td>TODO</td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <strong>Tax Rate:</strong>
+    <!-- Display the taxRate here (use the provided 'percentage' filter) -->
+    TODO
+  </div>
+  <div>
+    <strong>Total Cost:</strong>
+    <!-- Display the total here (use the built-in 'currency' filter) -->
+    TODO
+  </div>
+  </body>
+</html>

@@ -1,3 +1,11 @@
+.logo {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 20%;
+  opacity: 0.6;
+}
+
 .reveal section img.plain {
   background: none;
   border: none;

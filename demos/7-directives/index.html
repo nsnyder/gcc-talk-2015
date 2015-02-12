@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="directivesDemo">
+  <head>
+    <base href="/">
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="demos/7-directives/main.js"></script>
+
+    <link rel="stylesheet" href="demos/7-directives/card.css">
+  </head>
+
+  <body ng-controller="MainController as main">
+    <tw-contact-card ng-repeat="person in main.people | orderBy:['last', 'first']" person="person"></tw-contact-card>
+  </body>
+</html>

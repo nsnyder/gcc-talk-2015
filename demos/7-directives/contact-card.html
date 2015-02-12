@@ -1,0 +1,10 @@
+<div class="card">
+  <h3>{{person.last}}, {{person.first}}</h3>
+
+  <p ng-show="person.address">
+    {{person.address.street}}<br>
+    {{person.address.city}}, {{person.address.state}} {{person.address.zip}}
+  </p>
+
+  <p ng-show="person.phone">{{person.phone.type}}: ({{person.phone.areaCode}}) {{person.phone.exchangeCode}}-{{person.phone.subscriberNumber}}</p>
+</div>

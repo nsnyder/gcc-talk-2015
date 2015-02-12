@@ -12,11 +12,11 @@
 
     <!-- Printing and PDF exports -->
     <script>
-      var link = document.createElement( 'link' );
+      var link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
     </script>
   </head>
 
@@ -260,7 +260,7 @@ app.controller('MyController', function($scope, myService) {
         </section>
 
         <section>
-          <h3>Directives</h3>
+          <a href="demos/7-directives/" target="_blank"><h3>Directives</h3></a>
         </section>
 
         <section>

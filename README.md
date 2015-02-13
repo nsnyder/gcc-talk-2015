@@ -11,3 +11,6 @@
 3. Install project dependencies: `npm install`
 4. Start development server: `gulp`
 5. A browser window should open for you with livereload enabled. File changes will automatically trigger a page reload. CSS changes can be instantly injected without page reload.
+
+#### Labs
+Instructions available at https://docs.google.com/document/d/1R5zSIAk43Y4zZlzxlVby2f4NwonouG0bzv8WMHOxsWg/edit
